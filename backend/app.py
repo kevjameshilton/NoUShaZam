@@ -1,14 +1,17 @@
 from flask import Flask, jsonify
 from flask_restful import Api
-from flask_pymongo import PyMongo
 
-from resources.genre import pick
+<<<<<<< HEAD
+from resources.game import GameCreator
+=======
+# from resources.genre import pick
+>>>>>>> 0e6d35300410b9651cedc499d97683c0779f43b2
 
 app = Flask(__name__)
 api = Api(app)
 
-api.add_resource(pick, 'genres')
-api.add_resource(sendSong, '/song/<string:genre>')
+api.add_resource(GameCreator, '<string:genre>')
+
 
 if __name__ == '__main__':
     app.run(port=3000, debug=True)

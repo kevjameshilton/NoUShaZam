@@ -16,3 +16,7 @@ class songPicker():
 
     def loadPath(self, num, genre):
         return '../songs/' + genre + '/' + loadLyrics(num, genre) + '.mp3'
+
+
+class pick(Resource):
+    parser = reqparse.ReqquestParser()
