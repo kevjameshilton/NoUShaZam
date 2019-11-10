@@ -18,5 +18,5 @@ class songPicker():
         return '../songs/' + genre + '/' + loadLyrics(num, genre) + '.mp3'
 
 
-class pick(Resource):
+class picker():
     parser = reqparse.ReqquestParser()
