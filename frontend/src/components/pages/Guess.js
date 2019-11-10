@@ -9,7 +9,7 @@ const Guess = props => {
         <button className="btn btn-dark">Back</button>
       </Link>
       <h1 className="text-center text-primary">{props.genre}</h1>
-      <Countdown />
+      <Countdown genre={props.genre} />
     </Fragment>
   );
 };
