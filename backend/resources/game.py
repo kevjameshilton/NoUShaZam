@@ -6,7 +6,7 @@ import traceback
 from random import random
 import math
 
-from genre import songPicker
+from resources.genre import songPicker
 
 class GameCreator(Resource):
 	parser = reqparse.RequestParser()
