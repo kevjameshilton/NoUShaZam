@@ -27,7 +27,7 @@ class GameCreator(Resource):
 			song_index = int(random() * 5) + 1
 			song = pop.loadName(song_index)
 			lyrics = pop.loadLyrics(song_index)
-			song_time = pop.
+			#song_time needs to be implemented in genre
 		except:
 			return 'message: genre not found'
 
