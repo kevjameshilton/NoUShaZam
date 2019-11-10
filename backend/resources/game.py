@@ -9,7 +9,7 @@ import traceback
 from random import random
 import math
 
-from resources.genre import pop, pick
+from resources.genre import songPicker, pick
 
 class GameCreator(Resource):
 	parser = reqparse.RequestParser()
@@ -25,10 +25,10 @@ class GameCreator(Resource):
 		try:
 			genre = pick()
 			song_index = int(random() * 5) + 1
-			song = pop.loadName(song_index)
-			lyrics = pop.loadLyrics(song_index)
-			song_path = pop.loadPath(song_index)
-			game_start = {"data": [song, lyrics, song_path]}
+			song = songPicker.loadName(song_index, genre)
+			lyrics = songPicker.loadLyrics(song_index, genre)
+			song_mp3 = songPicker.loadPath(song_index, genre)
+			game_start = {"data": [song, lyrics, song_mp3]}
 		except:
 			return 'message: unable to load data', 500
 
@@ -40,13 +40,19 @@ class Game(Resource):
 
 	def get(self, id):
 		try:
-			game = {"_id":ObjectId(id)}
+			game = {"_id": ObjectId(id)}
 		except:
 			return {'message': 'game not found'}, 500
 		return json_util._json_convert(game)
 
 	def put(self, id):
-		pass
+		try:
+			game = {"_id": ObjectId(id)}
+		except:
+			return {'message': 'Error looking up game'}
+
+
+
 
 	def delete(self, id):
 		pass
