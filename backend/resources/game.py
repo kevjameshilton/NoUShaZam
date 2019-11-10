@@ -6,7 +6,7 @@ import traceback
 from random import random
 import math
 
-from resources.genre import songPicker, pick
+from genre import songPicker
 
 class GameCreator(Resource):
 	parser = reqparse.RequestParser()
@@ -15,11 +15,11 @@ class GameCreator(Resource):
 		data = GameCreator.parser.parse_args()
 
 		try:
-			genre = pick()
+			_genre = pick()
 			song_index = int(random() * 5) + 1
-			song = songPicker.loadName(song_index, genre)
-			lyrics = songPicker.loadLyrics(song_index, genre)
-			song_mp3 = songPicker.loadPath(song_index, genre)
+			song = songPicker.loadName(song_index, _genre)
+			lyrics = songPicker.loadLyrics(song_index, _genre)
+			song_mp3 = songPicker.loadPath(song_index, _genre)
 			game_start = {"data": [song, lyrics, song_mp3]}
 		except:
 			return 'message: unable to load data', 500
