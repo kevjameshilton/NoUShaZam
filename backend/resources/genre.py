@@ -1,22 +1,18 @@
 # Genre Picker
-import ast
+import json
 
 
-class genrePicker():
-    parser = reqparse.RequestParser()
-    parser.add_argument('genre', type=str,
-                        required=True,
-                        help='Please pick a genre!'
-                        )
+class songPicker():
 
-    def pick():
+    def loadName(self, num, genre):
+        song = json.load(open("../../music/" + genre + "/songsLib.json"))
+        songName = song[str(num)]
+        return songName
 
+    def loadLyrics(self, num, genre):
+        lyrics = json.load(open("../songs/", genre, "/lyricsLib.json"))
+        songLyrics = lyrics[str(num)]
+        return songLyrics
 
-class pop():
-    d = json.load(open("popLib.json"))
-
-    def loadName(self, num):
-        song = d[num]
-
-    def loadLyrics(self, num):
-        lyrics = d[num]
+    def loadPath(self, num, genre):
+        return '../songs/' + genre + '/' + loadLyrics(num, genre) + '.mp3'

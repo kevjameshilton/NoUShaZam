@@ -8,8 +8,7 @@ app = Flask(__name__)
 api = Api(app)
 
 api.add_resource(pick, 'genres')
-api.add_resource(startGame, '/game/<string:genre>')
-
+api.add_resource(sendSong, '/song/<string:genre>')
 
 if __name__ == '__main__':
     app.run(port=3000, debug=True)
