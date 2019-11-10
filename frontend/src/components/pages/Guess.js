@@ -8,7 +8,7 @@ const Guess = props => {
   useEffect(() => {
     setTimeout(() => {
       axios
-        .get(`/song/${genre}`)
+        .get(`${genre}`)
         .then(res => {
           console.log(res.song);
         })
@@ -16,7 +16,7 @@ const Guess = props => {
           console.log("There was an error in requesting the song");
         });
     }, 2700);
-  }, []);
+  }, [genre]);
 
   return (
     <Fragment>
