@@ -1,7 +1,5 @@
 # Game
 from flask_restful import Resource, reqparse
-from bson.objectid import ObjectId
-#from db import mongo
 
 import datetime
 import traceback
@@ -30,7 +28,7 @@ class GameCreator(Resource):
 
 
 
-class Game(Resource):
+"""class Game(Resource):
 
 	def get(self):
 		try:
@@ -49,7 +47,7 @@ class Game(Resource):
 
 
 	def delete(self, id):
-		pass
+		pass"""
 
 
 
