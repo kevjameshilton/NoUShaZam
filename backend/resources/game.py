@@ -1,6 +1,5 @@
 # Game
 from flask_restful import Resource, reqparse
-from bson import json_util
 from bson.objectid import ObjectId
 #from db import mongo
 
@@ -13,13 +12,8 @@ from resources.genre import songPicker, pick
 
 class GameCreator(Resource):
 	parser = reqparse.RequestParser()
-	"""parser.add_argument('song_time',
-						type = int,
-						required=True,
-						)
-	"""
 
-	def get(self, id, pick):
+	def get(self, genre_name):
 		data = GameCreator.parser.parse_args()
 
 		try:
@@ -32,25 +26,25 @@ class GameCreator(Resource):
 		except:
 			return 'message: unable to load data', 500
 
-		return json_util._json_convert(game_start), 201 
+		return game_start 
 
 
 
 class Game(Resource):
 
-	def get(self, id):
+	def get(self):
 		try:
-			game = {"_id": ObjectId(id)}
+			#game = {"_id": ObjectId(id)}
+			pass
 		except:
 			return {'message': 'game not found'}, 500
 		return json_util._json_convert(game)
 
-	def p(self, id):
+	def put(self, id):
 		try:
 			game = {"_id": ObjectId(id)}
 		except:
 			return {'message': 'Error looking up game'}
-
 
 
 
