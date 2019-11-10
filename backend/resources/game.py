@@ -6,7 +6,7 @@ import traceback
 from random import random
 import math
 
-from resources.genre import songPicker
+from genre import songPicker
 
 class GameCreator(Resource):
 
