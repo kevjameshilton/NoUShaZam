@@ -9,10 +9,8 @@ import math
 from resources.genre import songPicker
 
 class GameCreator(Resource):
-	parser = reqparse.RequestParser()
 
 	def get(self, genre_name):
-		data = GameCreator.parser.parse_args()
 
 		try:
 			_genre = pick()
