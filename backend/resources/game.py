@@ -5,19 +5,21 @@ import datetime
 import traceback
 from random import random
 import math
+import traceback
 
-from genre import songPicker
+from resources.genre import SongPicker
 
 class GameCreator(Resource):
 
-	def get(self, _genre):
+	def get(self, genre):
 		try:
 			song_index = int(random() * 5) + 1
-			song = songPicker.loadName(song_index, _genre)
-			lyrics = songPicker.loadLyrics(song_index, _genre)
-			song_mp3 = songPicker.loadPath(song_index, _genre)
+			song = SongPicker.loadName(song_index, genre)
+			lyrics = SongPicker.loadLyrics(song_index, genre)
+			song_mp3 = SongPicker.loadPath(song_index, genre)
 			game_start = {"data": [song, lyrics, song_mp3]}
 		except:
+			traceback.print_exc()
 			return 'message: unable to load data', 500
 
 		return game_start 

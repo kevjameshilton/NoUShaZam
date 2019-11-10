@@ -2,20 +2,20 @@
 import json
 
 
-class songPicker():
-
-    def loadName(self, num, genre):
+class SongPicker:
+    @classmethod
+    def loadName(cls, num, genre):
         song = json.load(open("../../music/" + genre + "/songsLib.json"))
         songName = song[str(num)]
         return songName
-
-    def loadLyrics(self, num, genre):
+    @classmethod
+    def loadLyrics(cls, num, genre):
         lyrics = json.load(open("../songs/", genre, "/lyricsLib.json"))
         songLyrics = lyrics[str(num)]
         return songLyrics
-
-    def loadPath(self, num, genre):
-        return '../songs/' + genre + '/' + loadLyrics(num, genre) + '.mp3'
+    @classmethod
+    def loadPath(cls, num, genre):
+        return '../songs/' + genre + '/' + cls.loadName(num, genre) + '.mp3'
 
 
 '''class picker():
