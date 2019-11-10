@@ -19,7 +19,7 @@ class GameCreator(Resource):
 						)
 	"""
 
-	def post(self, id, pick):
+	def get(self, id, pick):
 		data = GameCreator.parser.parse_args()
 
 		try:
@@ -45,7 +45,7 @@ class Game(Resource):
 			return {'message': 'game not found'}, 500
 		return json_util._json_convert(game)
 
-	def put(self, id):
+	def p(self, id):
 		try:
 			game = {"_id": ObjectId(id)}
 		except:
