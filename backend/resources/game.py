@@ -10,10 +10,8 @@ from resources.genre import songPicker
 
 class GameCreator(Resource):
 
-	def get(self, genre_name):
-
+	def get(self, _genre):
 		try:
-			_genre = pick()
 			song_index = int(random() * 5) + 1
 			song = songPicker.loadName(song_index, _genre)
 			lyrics = songPicker.loadLyrics(song_index, _genre)
