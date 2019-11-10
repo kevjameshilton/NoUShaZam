@@ -4,7 +4,7 @@ import countdown from "./countdown.gif";
 const Countdown = () => {
   const [visibility, setVisibility] = useState(true);
 
-  setTimeout(() => setVisibility(false), 2900);
+  setTimeout(() => setVisibility(false), 2700);
   let style = { width: "70%", margin: "auto", display: "block" };
   if (!visibility) style.display = "none";
 
