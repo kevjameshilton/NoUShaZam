@@ -4,11 +4,12 @@ from bson import json_util
 from bson.objectid import ObjectId
 #from db import mongo
 
+import datetime
 import traceback
 from random import random
 import math
 
-from resources.genre import pop
+from resources.genre import pop, pick
 
 class GameCreator(Resource):
 	parser = reqparse.RequestParser()
@@ -18,7 +19,6 @@ class GameCreator(Resource):
 						)
 	"""
 
-
 	def post(self, id, pick):
 		data = GameCreator.parser.parse_args()
 
@@ -27,20 +27,29 @@ class GameCreator(Resource):
 			song_index = int(random() * 5) + 1
 			song = pop.loadName(song_index)
 			lyrics = pop.loadLyrics(song_index)
-			#song_time needs to be implemented in genre
+			song_path = pop.loadPath(song_index)
+			game_start = {"data": [song, lyrics, song_path]}
 		except:
-			return 'message: genre not found'
+			return 'message: unable to load data', 500
 
-		
-
-		return json_util._json_convert(game_created), 201 
+		return json_util._json_convert(game_start), 201 
 
 
 
-"""class Game(Resource):
+class Game(Resource):
 
 	def get(self, id):
-		pass"""
+		try:
+			game = {"_id":ObjectId(id)}
+		except:
+			return {'message': 'game not found'}, 500
+		return json_util._json_convert(game)
+
+	def put(self, id):
+		pass
+
+	def delete(self, id):
+		pass
 
 
 
