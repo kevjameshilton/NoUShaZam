@@ -1,8 +1,23 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import Countdown from "./../layout/Countdown";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Guess = props => {
+  const genre = props.genre.toLowerCase();
+  useEffect(() => {
+    setTimeout(() => {
+      axios
+        .get(`/song/${genre}`)
+        .then(res => {
+          console.log(res.song);
+        })
+        .catch(err => {
+          console.log("There was an error in requesting the song");
+        });
+    }, 2700);
+  }, []);
+
   return (
     <Fragment>
       <Link to="/">
